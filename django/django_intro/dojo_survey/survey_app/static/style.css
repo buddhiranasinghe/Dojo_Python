@@ -1,0 +1,61 @@
+#wrapper {
+	width: 600px;
+	margin: 0px auto;
+	text-align: center;
+	border: 2px solid black;
+	padding: 20px;
+}
+
+.user_input {
+	display: flex;
+	margin-top: 5px;
+}
+
+h4 {
+	margin: 20px;
+}
+
+.name {
+	width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.location {
+	width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 45px;
+}
+
+.language {
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.gender {
+	margin-top: 10px;
+    margin-left: 50px;
+}
+
+.duration {
+	margin-top: 10px;
+    margin-left: 15px;
+}
+
+.comment {
+	width: 300px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.btn {
+	margin-left: 400px;
+    height: 30px;
+    width: 70px;
+    margin-top: 20px;
+    background-color: #00bcd4;
+    padding: 5px;
+}
