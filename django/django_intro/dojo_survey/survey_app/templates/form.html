@@ -8,7 +8,7 @@
       	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	</head>
 	<body>
-		<div id="wrapper">
+		<div class="wrapper">
 			<form action="/process" method=POST>
 				{% csrf_token %}
 				<div class="user_input">
@@ -18,39 +18,39 @@
 				<div class="user_input">
 					<h4>Dojo Location:</h4>
 					<select name="location" class="location">
-						<option value="los_angeles">Los Angeles</option>
-						<option value="san_francisco">San Francisco</option>
-						<option value="new_york">New York</option>
-						<option value="houston">Houston</option>
-						<option value="san_diego">San Diego</option>
+						<option value="Los Angeles">Los Angeles</option>
+						<option value="San Francisco">San Francisco</option>
+						<option value="New York">New York</option>
+						<option value="Houston">Houston</option>
+						<option value="San Diego">San Diego</option>
 					</select>
 				</div>
 				<div class="user_input">
 					<h4>Favorite Language:</h4>
 					<select name="fav_lang" class="language">
-						<option value="python">Python</option>
-						<option value="java">Java</option>
-						<option value="java_script">Java Script</option>
-						<option value="django">Django</option>
+						<option value="Python">Python</option>
+						<option value="Java">Java</option>
+						<option value="Java Script">Java Script</option>
+						<option value="Django">Django</option>
 					</select>
 				</div>
 				<div class="user_input">
 					<h4>Gender:</h4>
 					<div class="gender">
-						<input type="radio" id="male" name="gender" value="male">
+						<input type="radio" id="male" name="gender" value="Male">
 						<label for="male">Male</label><br>
-						<input type="radio" id="female" name="gender" value="female">
+						<input type="radio" id="female" name="gender" value="Female">
 						<label for="female">Female</label><br>
 					</div>
 				</div>
 				<div class="user_input">
 					<h4>Program Duration:</h4>
-					<div name="duration" class="duration">
-						<input type="checkbox" id="3_months" name="3_months" value="3_months">
+					<div class="duration">
+						<input type="checkbox" id="3_months" name="duration" value="3 Months">
 						<label for="3_months">3 Months</label><br>
-						<input type="checkbox" id="6_months" name="6_months" value="6_months">
+						<input type="checkbox" id="6_months" name="duration" value="6 Months">
 						<label for="6_months">6 Months</label><br>
-						<input type="checkbox" id="9_months" name="9_months" value="9_months">
+						<input type="checkbox" id="9_months" name="duration" value="9 Months">
 						<label for="9_months">9 Months</label><br><br>
 					</div>
 				</div>
