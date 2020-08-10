@@ -1,0 +1,22 @@
+#wrapper {
+	width: 900px;
+	margin: 0px auto;
+	text-align: center;
+	border: 2px solid black;
+	padding: 10px;
+	font-family: sans-serif;
+}
+
+#sub_wrapper {
+	width: 850px;
+	margin: 10px auto;
+	text-align: center;
+	border: 2px solid black;
+	padding: 10px;
+}
+
+.user_place {
+	width: 200px;
+	display: inline-block;
+	border: 2px solid black;
+}
