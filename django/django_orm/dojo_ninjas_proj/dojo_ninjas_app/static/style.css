@@ -1,0 +1,19 @@
+#wrapper {
+	width: 800px;
+	text-align: center;
+	border: 2px solid black;
+	margin: auto;
+}
+
+#sub_wrapper {
+  margin: auto;
+  display: flex;
+  text-align: center;
+}
+
+.dojo_ninja {
+  width: 395px;
+  margin: auto;
+}
+
+
