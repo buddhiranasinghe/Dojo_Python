@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Books and Authors</title>
+		{% load static %}
+      	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	</head>
+	<body>
+		<div id="book_wrapper">
+			<a href="/">Home</a>
+			<a href="/authors">Authors</a>
+			<h2>{{book.title}}</h2>
+			<p><strong>ID:</strong> {{book.id}}</p>
+			<p><strong>Description:</strong> {{book.desc}}</p>
+			<p><strong>Authors:</strong></p>
+			<ul>
+				{% for author in book.authors.all %}
+				<li>{{author.first_name}} {{author.last_name}}</li>
+				{% endfor %}
+			</ul>
+			
+			<form action="/books/{{book.id}}/assign" method="POST">
+				{% csrf_token %}
+				<select name="author_id">
+					{% for author in authors %}
+					<option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+					{% endfor %}
+				</select>
+				<input type="submit" value="Add Author">
+			</form>
+			
+		</div>
+	</body>
+</html>
