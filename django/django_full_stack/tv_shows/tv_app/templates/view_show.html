@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>View Shows</title>
+		{% load static %}
+      	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	</head>
+	<body>
+		<div id="wrapper">
+			<a href="/shows">Go Back</a>
+			<div id="new_shows">
+				<h2>TV Show : {{show.id}}</h2>
+				<label for="title">Title</label> : {{show.title}} <br> <br>
+				<label for="network">Network</label> : {{show.network}} <br> <br>
+				<label for="release_date">Release Date</label> : {{show.release_date | date:'Y-m-d'}} <br> <br>
+				<label for="description">Description</label> : {{show.description}} <br> <br>
+				<a href="/shows/{{show.id}}/edit">Edit</a> | <a href="/shows/{{show.id}}/delete">Delete</a>
+			</div>
+		</div>
+	</body>
+</html>
