@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import *
 # Create your views here.
 
@@ -13,7 +14,13 @@ def new_shows(request):
 
 def create(request):
 	if request.method == 'POST':
-		# print(request.POST)
+		errors = Show.objects.validate(request.POST)
+		# print(errors)
+		if errors:
+			for (key, value) in errors.items():
+				messages.error(request, value)
+			return redirect('/shows/new')
+
 		Show.objects.create(
 			title = request.POST['title'],
 			network = request.POST['network'],
@@ -37,7 +44,12 @@ def edit_show(request, show_id):
 	return render (request, "edit_shows.html", context)
 
 def update_show(request, show_id):
-	print(request.POST)
+	errors = Show.objects.validate(request.POST)
+	if errors:
+		for (key, value) in errors.items():
+			messages.error(request, value)
+		return render (request, "edit_shows.html")
+
 	one_update = Show.objects.get(id=show_id)
 	one_update.title = request.POST['title']
 	one_update.network = request.POST['network']
