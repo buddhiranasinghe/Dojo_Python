@@ -1,0 +1,153 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>Home</title>
+			{% load static %}
+	      	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		</head>
+		<body>
+			<div class="wrapper">
+				<div>
+					<img src="{% static "images/elephants.jpg" %}" alt="elephants"/>
+					<a href="/viewlogin">Login &amp; Register</a> | <a href="/logout"> Logout </a>
+					<!-- <input type="submit" value="Register" class="log-buttons" onclick="login()">
+					<input type="submit" value="Login" class="log-buttons" onclick="register()"> -->
+				</div>
+				<div id="middle-container">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+					    <ol class="carousel-indicators">
+					    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+						    <li data-target="#myCarousel" data-slide-to="2"></li>
+					    </ol>
+
+				    	<!-- Wrapper for slides -->
+					    <div class="carousel-inner">
+							<div class="item active" class="carousel-image">
+						    	<img src="{% static "images/image1.jpg" %}" alt="Train" class="carousel">
+						        <div class="carousel-caption">
+						        	<h3>Kandy</h3>
+						          	<p>Explore the Up Country!</p>
+						    	</div>
+				      		</div>
+
+						    <div class="item" class="carousel-image">
+						    	<img src="{% static "images/image2.jpeg" %}" alt="Beach" class="carousel">
+						        <div class="carousel-caption">
+						        	<h3>Beaches</h3>
+						          	<p>Enjoy the lovely Beaches!</p>
+						        </div>
+						    </div>
+				    
+					    	<div class="item" class="carousel-image">
+					        	<img src="{% static "images/image3.jpg" %}" alt="Sigiriya" class="carousel">
+					        	<div class="carousel-caption">
+					          		<h3>History</h3>
+					          		<p>Dive in to the History of Sri Lanka!</p>
+					        	</div>
+					      	</div>
+					    </div>
+
+						<!-- Left and right controls -->
+					    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					    	<span class="glyphicon glyphicon-chevron-left"></span>
+					    	<span class="sr-only">Previous</span>
+					    </a>
+					    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+					    	<span class="glyphicon glyphicon-chevron-right"></span>
+					      	<span class="sr-only">Next</span>
+					    </a>
+					</div>
+				</div>
+				<h2>Hello... {{request.session.name}} let's explore Sri Lanka...</h2>
+				<div id="lower-container">
+					<div class="lower-boxes">
+						<div class="lower-left" id="tours" action="/tours">
+							<form method="POST">
+								<a href="/tours"><h2>Book a tour . . .</h2></a>
+							</form>
+						</div>
+						<h2>Things to do . . .</h2>
+						<div class="lower-left">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+							    <!-- <ol class="carousel-indicators">
+							    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+								    <li data-target="#myCarousel" data-slide-to="2"></li>
+							    </ol> -->
+
+						    	<!-- Wrapper for slides -->
+							    <div class="carousel-inner" id="lower-carousel-inner">
+									<div class="item active" class="carousel-image">
+								    	<img src="{% static "images/image4.jpg" %}" alt="Fishing" class="carousel">
+								        <!-- <div class="lower-carousel-caption">
+								        	<h3>Biking</h3>
+								          	<p>Explore the Up Country!</p>
+								    	</div> -->
+						      		</div>
+
+								    <div class="item" class="carousel-image">
+								    	<img src="{% static "images/image5.jpg" %}" alt="Hiking" class="carousel">
+								        <!-- <div class="lower-carousel-caption">
+								        	<h3>Hiking</h3>
+								          	<p>Enjoy the lovely Beaches!</p>
+								        </div> -->
+								    </div>
+						    
+							    	<div class="item" class="carousel-image">
+							        	<img src="{% static "images/image6.jpg" %}" alt="Biking" class="carousel">
+							        	<!-- <div class="lower-carousel-caption">
+							          		<h3>Biking</h3>
+							          		<p>Dive in to the History of Sri Lanka!</p>
+							        	</div> -->
+							      	</div>
+							    </div>
+
+								<!-- Left and right controls -->
+							    <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							    	<span class="glyphicon glyphicon-chevron-left"></span>
+							    	<span class="sr-only">Previous</span>
+							    </a>
+							    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+							    	<span class="glyphicon glyphicon-chevron-right"></span>
+							      	<span class="sr-only">Next</span>
+							    </a> -->
+								</div>
+							</div>
+						</div>
+					<div class="lower-boxes" id="lower-right">
+						<h2>Our Customer Reviews . . .</h2>
+						<form action="/create_review" method="POST">
+							{% csrf_token %}
+							<h3>Add a Reviews</h3>
+							<textarea name="new_review"></textarea> <br> <br>
+							<input type="submit" value="Submit">
+						</form>
+						{% for message in messages %}
+						<li{% if message.tags %} class="{{message.tags}}}"{% endif %}>{{message}}</li>
+						{% endfor %}
+						<hr>
+						{% for my_review in all_reviews %}
+						<div id="my_reviews">
+							<h4>{{my_review.review}}</h4>
+							<h4>Posted by: {{my_review.creator.first_name}} {{my_review.creator.last_name}}</h4>
+							{% if request.session.user_id == my_review.creator.id %}
+							<a href="/delete/{{my_review.id}}">Delete</a>
+							{% endif %}
+							<hr>
+						</div>
+						{% endfor%}
+					</div>
+				</div>
+				<footer>
+					<a href="https://www.facebook.com">Facebook</a> | <a href="www.instagram.com">Instagram</a>
+				</footer>
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Log and Reg</title>
+		{% load static %}
+      	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	</head>
+	<body>
+		<div class="wrapper" id="login-page">
+			{% if messages %}
+			<ul class="messages">    
+			    {% for message in messages %}    
+			        <p>{{message}}</p>    
+			    {% endfor %}
+			</ul>
+			{% endif %}
+			<div class="form">
+				<h2>Register</h2>
+				<form action="/register" method="POST">
+					{% csrf_token %}
+					<p>First Name</p>
+					<input type="text" name="first_name">
+					<p>Last Name</p>
+					<input type="text" name="last_name">
+					<p>Email</p>
+					<input type="text" name="email">
+					<p>Password</p>
+					<input type="text" name="password">
+					<p>Confirm Password</p>
+					<input type="text" name="confirm_password"> <br> <br>
+					<input type="submit" value="Register">
+				</form>
+			</div>
+
+			<div class="form">
+				<h2>Login</h2>
+				<form action="/login" method="POST">
+					{% csrf_token %}
+					<p>Email</p>
+					<input type="text" name="email">
+					<p>Password</p>
+					<input type="text" name="password"> <br> <br>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
